@@ -1,0 +1,26 @@
+target/
+**/target/
+
+Cargo.lock
+
+.#*
+*~
+
+# Rust compiled output
+target/
+
+# macOS junk
+.DS_Store
+
+# profiler traces
+*.trace
+
+# don’t track compiled executables accidentally
+*.exe
+*.bin
+*.out
+
+# optional: AoC input files
+data/
+
+.assets
