@@ -1,11 +1,67 @@
 advent_of_code::solution!(3);
 
 pub fn part_one(input: &str) -> Option<u64> {
-    None
+    let mut total: Vec<u64> = Vec::new();
+    for bank in input.lines().filter(|l| !l.is_empty()) {
+        let chars: Vec<char> = bank.chars().collect();
+        let mut best = 0u64;
+
+        for i in 0..chars.len() {
+            for j in i+1..chars.len() {
+                let a = chars[i].to_digit(10).unwrap() as u64;
+                let b = chars[j].to_digit(10).unwrap() as u64;
+                let val = a * 10 + b;
+                if val > best {
+                    best = val;
+                }
+            }
+        }
+        total.push(best);
+
+    }
+    Some(total.iter().sum())
+
 }
 
 pub fn part_two(input: &str) -> Option<u64> {
-    None
+    let mut total: Vec<u64> = Vec::new();
+    let k = 12;
+
+    for bank in input.lines().filter(|l| !l.is_empty()) {
+        let chars: Vec<char> = bank.chars().collect();
+        let n = chars.len();
+        let mut start = 0usize;
+        let mut remaining = k;
+        let mut best = 0u64;
+
+        while remaining > 0 {
+            let end = n - remaining;
+
+            let mut best_char = '0';
+            let mut best_index = start;
+
+            for i in start..=end {
+                let c = chars[i];
+                if c > best_char {
+                    best_char = c;
+                    best_index = i;
+
+                    if c == '9' {
+                        break;
+                    }
+                }
+            }
+            let d = best_char.to_digit(10).unwrap() as u64;
+            best = best * 10 + d;
+
+            start = best_index + 1;
+            remaining -= 1;
+        }
+
+        total.push(best);
+
+    }
+    Some(total.iter().sum())
 }
 
 #[cfg(test)]
