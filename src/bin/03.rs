@@ -7,7 +7,7 @@ pub fn part_one(input: &str) -> Option<u64> {
         let mut best = 0u64;
 
         for i in 0..chars.len() {
-            for j in i+1..chars.len() {
+            for j in i + 1..chars.len() {
                 let a = chars[i].to_digit(10).unwrap() as u64;
                 let b = chars[j].to_digit(10).unwrap() as u64;
                 let val = a * 10 + b;
@@ -17,10 +17,8 @@ pub fn part_one(input: &str) -> Option<u64> {
             }
         }
         total.push(best);
-
     }
     Some(total.iter().sum())
-
 }
 
 pub fn part_two(input: &str) -> Option<u64> {
@@ -59,7 +57,6 @@ pub fn part_two(input: &str) -> Option<u64> {
         }
 
         total.push(best);
-
     }
     Some(total.iter().sum())
 }

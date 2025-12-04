@@ -18,7 +18,6 @@ pub fn part_one(input: &str) -> Option<u64> {
         // dbg!(end);
 
         for k in start..=end {
-
             let s = k.to_string();
             let candidate = format!("{s}{s}").parse::<u64>().unwrap(); // concat string
 
@@ -68,7 +67,7 @@ pub fn part_two(input: &str) -> Option<u64> {
                 let candidate: u64 = candidate_str.parse().unwrap();
 
                 if candidate > max_end {
-                    break
+                    break;
                 }
 
                 if ranges
