@@ -38,8 +38,7 @@ pub fn part_two(input: &str) -> Option<u64> {
             let mut best_char = '0';
             let mut best_index = start;
 
-            for i in start..=end {
-                let c = chars[i];
+            for (i, &c) in chars.iter().enumerate().take(end + 1).skip(start) {
                 if c > best_char {
                     best_char = c;
                     best_index = i;

@@ -73,10 +73,9 @@ pub fn part_two(input: &str) -> Option<u64> {
                 if ranges
                     .iter()
                     .any(|&(lo, hi)| candidate >= lo && candidate <= hi)
+                    && seen.insert(candidate)
                 {
-                    if seen.insert(candidate) {
-                        sum += candidate;
-                    }
+                    sum += candidate;
                 }
 
                 m += 1;
