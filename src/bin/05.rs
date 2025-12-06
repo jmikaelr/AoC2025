@@ -3,16 +3,13 @@ advent_of_code::solution!(5);
 #[derive(Debug, Eq, PartialEq, Hash)]
 struct Range {
     low: i64,
-    high: i64
+    high: i64,
 }
 
 pub fn part_one(input: &str) -> Option<u64> {
     let (ranges, ids) = parse_input(input);
 
-    let fresh_count = ids
-        .into_iter()
-        .filter(|id| is_fresh(*id, &ranges))
-        .count() as u64;
+    let fresh_count = ids.into_iter().filter(|id| is_fresh(*id, &ranges)).count() as u64;
     Some(fresh_count)
 }
 
@@ -37,13 +34,9 @@ pub fn part_two(input: &str) -> Option<u64> {
         }
     }
 
-    let total = merged
-        .iter()
-        .map(|r| (r.high - r.low + 1) as u64)
-        .sum();
+    let total = merged.iter().map(|r| (r.high - r.low + 1) as u64).sum();
 
     Some(total)
-
 }
 
 fn parse_input(input: &str) -> (Vec<Range>, Vec<i64>) {
@@ -52,8 +45,7 @@ fn parse_input(input: &str) -> (Vec<Range>, Vec<i64>) {
     let ranges = ranges_part
         .lines()
         .map(|line| {
-            let (low_str, high_str) = line
-                .split_once("-").unwrap();
+            let (low_str, high_str) = line.split_once("-").unwrap();
             Range {
                 low: low_str.parse().unwrap(),
                 high: high_str.parse().unwrap(),
@@ -67,7 +59,6 @@ fn parse_input(input: &str) -> (Vec<Range>, Vec<i64>) {
         .collect::<Vec<_>>();
 
     (ranges, ids)
-
 }
 
 fn is_fresh(id: i64, ranges: &[Range]) -> bool {
