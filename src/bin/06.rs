@@ -37,12 +37,7 @@ pub fn part_one(input: &str) -> Option<u64> {
         let op_row = rows - 1;
 
         let mut op = None;
-        for (_, ch) in grid[op_row]
-            .iter()
-            .enumerate()
-            .take(end + 1)
-            .skip(start)
-        {
+        for (_, ch) in grid[op_row].iter().enumerate().take(end + 1).skip(start) {
             if *ch == '+' || *ch == '*' {
                 op = Some(ch);
                 break;
@@ -108,12 +103,7 @@ pub fn part_two(input: &str) -> Option<u64> {
         let end = c - 1;
 
         let mut op = None;
-        for (_, ch) in grid[op_row]
-            .iter()
-            .enumerate()
-            .take(end + 1)
-            .skip(start)
-        {
+        for (_, ch) in grid[op_row].iter().enumerate().take(end + 1).skip(start) {
             if *ch == '+' || *ch == '*' {
                 op = Some(ch);
                 break;
