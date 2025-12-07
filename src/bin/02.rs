@@ -8,18 +8,23 @@ pub fn part_one(input: &str) -> Option<u64> {
     let max_end = ranges.iter().map(|&(_, b)| b).max().unwrap_or(0);
     let max_digits = max_end.to_string().len();
 
-    let mut sum = 0;
+    let mut pow10 = vec![1u64; max_digits + 1];
+    for i in 1..max_digits {
+        pow10[i] = pow10[i - 1].saturating_mul(10);
+    }
+
+    let mut sum = 0u64;
 
     for half_len in 1..=max_digits / 2 {
-        let start = 10u64.pow(half_len as u32 - 1); // 10^0 ... 10^1 ... 10^(n-1)
-        let end = 10u64.pow(half_len as u32) - 1; // 10^1 - 1 ... 10^2 ... 10^n - 1
-        // dbg!(half_len);
-        // dbg!(start);
-        // dbg!(end);
+        let pow_len = pow10[half_len];
+        let start = pow_len / 10;
+        let end = pow_len - 1;
 
         for k in start..=end {
-            let s = k.to_string();
-            let candidate = format!("{s}{s}").parse::<u64>().unwrap(); // concat string
+            let candidate = match k.checked_mul(pow_len).and_then(|x| x.checked_add(k)) {
+                Some(v) => v,
+                None => break,
+            };
 
             if candidate > max_end {
                 break;
@@ -41,30 +46,40 @@ pub fn part_two(input: &str) -> Option<u64> {
     let ranges = parse_ranges(input);
 
     let max_end = ranges.iter().map(|&(_, b)| b).max().unwrap_or(0);
-    let max_digits = max_end.to_string().len() as u64;
+    let max_digits = max_end.to_string().len();
 
-    let mut seen: HashSet<u64> = HashSet::new();
+    let mut pow10 = vec![1u64; max_digits + 1];
+    for i in 1..max_digits {
+        pow10[i] = pow10[i - 1].saturating_mul(10);
+    }
+
     let mut sum: u64 = 0;
+    let mut seen: HashSet<u64> = HashSet::new();
 
     for half_len in 1..=max_digits / 2 {
-        let start = 10u64.pow(half_len as u32 - 1); // 10^0 ... 10^1 ... 10^(n-1)
-        let end = 10u64.pow(half_len as u32) - 1; // 10^1 - 1 ... 10^2 ... 10^n - 1
-        // dbg!(half_len);
-        // dbg!(start);
-        // dbg!(end);
+        let pow_len = pow10[half_len];
+        let start = pow_len / 10;
+        let end = pow_len - 1;
 
         for k in start..=end {
-            let s = k.to_string();
+            let mut candidate = 0u64;
+            let mut m = 0usize;
 
-            let mut m = 2;
             loop {
-                let total_len = half_len * m;
-                if total_len > max_digits {
+                candidate = match candidate.checked_mul(pow_len).and_then(|x| x.checked_add(k)) {
+                    Some(v) => v,
+                    None => break,
+                };
+
+                m += 1;
+
+                if half_len * m > max_digits {
                     break;
                 }
 
-                let candidate_str = s.repeat(m as usize);
-                let candidate: u64 = candidate_str.parse().unwrap();
+                if m < 2 {
+                    continue;
+                }
 
                 if candidate > max_end {
                     break;
@@ -78,7 +93,6 @@ pub fn part_two(input: &str) -> Option<u64> {
                     sum += candidate;
                 }
 
-                m += 1;
             }
         }
     }
