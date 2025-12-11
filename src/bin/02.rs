@@ -66,7 +66,10 @@ pub fn part_two(input: &str) -> Option<u64> {
             let mut m = 0usize;
 
             loop {
-                candidate = match candidate.checked_mul(pow_len).and_then(|x| x.checked_add(k)) {
+                candidate = match candidate
+                    .checked_mul(pow_len)
+                    .and_then(|x| x.checked_add(k))
+                {
                     Some(v) => v,
                     None => break,
                 };
@@ -92,7 +95,6 @@ pub fn part_two(input: &str) -> Option<u64> {
                 {
                     sum += candidate;
                 }
-
             }
         }
     }
