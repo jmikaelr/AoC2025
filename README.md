@@ -25,8 +25,10 @@ Current timings from `cargo time --all --store`:
 | [Day 5](./src/bin/05.rs) | `82.9µs` | `30.9µs` |
 | [Day 6](./src/bin/06.rs) | `203.3µs` | `126.4µs` |
 | [Day 7](./src/bin/07.rs) | `54.6µs` | `62.8µs` |
+| [Day 8](./src/bin/08.rs) | `19.2ms` | `18.8ms` |
+| [Day 9](./src/bin/09.rs) | `528.3µs` | `11.1ms` |
 
-**Total: 5.84ms**
+**Total: 55.47ms**
 <!--- benchmarking table --->
 
 ## Layout
