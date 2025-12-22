@@ -18,17 +18,20 @@ Current timings from `cargo time --all --store`:
 
 | Day | Part 1 | Part 2 |
 | :---: | :---: | :---:  |
-| [Day 1](./src/bin/01.rs) | `63.2µs` | `59.4µs` |
-| [Day 2](./src/bin/02.rs) | `1.3ms` | `1.5ms` |
-| [Day 3](./src/bin/03.rs) | `643.9µs` | `68.4µs` |
-| [Day 4](./src/bin/04.rs) | `146.7µs` | `1.5ms` |
-| [Day 5](./src/bin/05.rs) | `82.9µs` | `30.9µs` |
-| [Day 6](./src/bin/06.rs) | `203.3µs` | `126.4µs` |
-| [Day 7](./src/bin/07.rs) | `54.6µs` | `62.8µs` |
-| [Day 8](./src/bin/08.rs) | `19.2ms` | `18.8ms` |
-| [Day 9](./src/bin/09.rs) | `528.3µs` | `11.1ms` |
+| [Day 1](./src/bin/01.rs) | `69.4µs` | `68.1µs` |
+| [Day 2](./src/bin/02.rs) | `1.4ms` | `1.6ms` |
+| [Day 3](./src/bin/03.rs) | `692.5µs` | `80.1µs` |
+| [Day 4](./src/bin/04.rs) | `156.3µs` | `1.6ms` |
+| [Day 5](./src/bin/05.rs) | `87.5µs` | `32.8µs` |
+| [Day 6](./src/bin/06.rs) | `197.4µs` | `135.4µs` |
+| [Day 7](./src/bin/07.rs) | `57.6µs` | `66.2µs` |
+| [Day 8](./src/bin/08.rs) | `22.7ms` | `21.7ms` |
+| [Day 9](./src/bin/09.rs) | `549.3µs` | `11.4ms` |
+| [Day 10](./src/bin/10.rs) | `298.4µs` | `7.1ms` |
+| [Day 11](./src/bin/11.rs) | `118.2µs` | `377.7µs` |
+| [Day 12](./src/bin/12.rs) | `113.8s` | `-` |
 
-**Total: 55.47ms**
+**Total: 113870.49ms**
 <!--- benchmarking table --->
 
 ## Layout
